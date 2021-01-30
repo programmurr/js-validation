@@ -1,0 +1,23 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-init": "webpack --mode=development",
+    "build": "webpack --watch --mode=development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^5.0.1",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
+  }
+}
