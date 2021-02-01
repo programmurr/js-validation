@@ -5,8 +5,8 @@ const email = document.getElementById('email');
 const emailError = document.querySelector('#email + span.error');
 const country = document.getElementById('country');
 const countryError = document.querySelector('#country + span.error');
-// const postCode = document.getElementById('post-code');
-// const postCodeError = document.querySelector('#post-code + span.error');
+const postCode = document.getElementById('post-code');
+const postCodeError = document.querySelector('#post-code + span.error');
 
 function showEmailError() {
   if (email.validity.valueMissing) {
@@ -19,17 +19,19 @@ function showEmailError() {
   emailError.className = 'error active';
 }
 
-function showCountryError(selection = country.value) {
+function showCountryError() {
   countryError.textContent = 'You need to select a country.';
   countryError.className = 'error active';
 }
 
-// function showPostCodeError() {
-//   if (postCode.validity.valueMissing) {
-//     postCodeError.textContent = 'You need to enter a postcode.';
-//   }
-//   postCodeError.className = 'error active';
-// }
+function showPostCodeError() {
+  if (postCode.validity.valueMissing) {
+    postCodeError.textContent = 'Please enter a postcode.';
+  } else if (!postCode.validity.patternMistmatch) {
+    postCodeError.textContent = 'You need to enter a UK-format postcode.';
+  }
+  postCodeError.className = 'error active';
+}
 
 email.addEventListener('input', () => {
   if (email.validity.valid) {
@@ -49,14 +51,14 @@ country.addEventListener('change', (event) => {
   }
 });
 
-// postCode.addEventListener('input', () => {
-//   if (postCode.validity.valid) {
-//     postCodeError.textContent = '';
-//     postCodeError.className = 'error';
-//   } else {
-//     showPostCodeError();
-//   }
-// });
+postCode.addEventListener('input', () => {
+  if (postCode.validity.valid) {
+    postCodeError.textContent = '';
+    postCodeError.className = 'error';
+  } else {
+    showPostCodeError();
+  }
+});
 
 form.addEventListener('submit', (event) => {
   if (!email.validity.valid) {
@@ -64,6 +66,9 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
   } else if (country.value === '0') {
     showCountryError(country.value);
+    event.preventDefault();
+  } else if (!postCode.validity.valid) {
+    showPostCodeError();
     event.preventDefault();
   }
 });
