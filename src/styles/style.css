@@ -10,6 +10,8 @@ p * {
 }
 
 input[type="email"],
+input[type="text"],
+input[type="password"],
 select {
   -webkit-appearance: none;
   appearance: none;

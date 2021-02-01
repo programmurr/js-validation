@@ -389,8 +389,33 @@
           <span class="error" aria-live="polite"></span>
         </label>
       </p>
-      <!-- Password -->
-      <!-- Password Confirm -->
+      <p>
+        <label for="password">
+          <span
+            >Please enter a password between 12 and 24 characters long:</span
+          >
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,24}$"
+          />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
+      <p>
+        <label for="password-confirm">
+          <span>Confirm your password:</span>
+          <input
+            type="password"
+            name="password-confirm"
+            id="password-confirm"
+            required
+          />
+          <span class="error" aria-live="polite"></span>
+        </label>
+      </p>
       <button>Submit</button>
     </form>
     <script src="bundle.js"></script>
